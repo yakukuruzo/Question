@@ -37,4 +37,20 @@ public class HeapQuestionsTest {
         }
         System.out.println();
     }
+
+    @Test
+    public void testConvertMinHeapIntoMaxHeap() {
+        // array representing Min Heap
+        int arr[] = {3, 5, 9, 6, 8, 20, 10, 12, 18, 9};
+        int n = arr.length;
+
+        System.out.print("Min Heap array : ");
+        HeapQuestions.printArray(arr, n);
+
+        HeapQuestions.convertMaxHeap(arr, n);
+
+        System.out.print("\nMax Heap array : ");
+        HeapQuestions.printArray(arr, n);
+
+    }
 }
