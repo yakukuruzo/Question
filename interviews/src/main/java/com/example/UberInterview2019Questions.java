@@ -11,7 +11,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.PriorityQueue;
-import java.util.Queue;
 
 public class UberInterview2019Questions {
 
@@ -92,6 +91,7 @@ public class UberInterview2019Questions {
 
             Node node = mMap.get(key);
             V result = node.value;
+            removeNode(node);
             bringToFront(node);
             // If element exists
             // find element in map
@@ -249,8 +249,6 @@ public class UberInterview2019Questions {
                 } else if (ch == '#') {
                     prevLayer = currLayer;
                     currLayer = new LinkedList<>();
-                } else if (ch == '*') {
-                    prevLayer.pollFirst();
                 } else {
                     Node node = new Node(ch);
                     prevLayer.peekFirst().children.add(node);
@@ -323,7 +321,7 @@ public class UberInterview2019Questions {
 
         int index = 0;
         for (Map.Entry<String, Integer> entry : freqMap.entrySet()) {
-            if(index < k) {
+            if (index < k) {
                 minHeap.add(entry);
             } else {
                 if (entry.getValue() > minHeap.peek().getValue()) {
@@ -333,7 +331,6 @@ public class UberInterview2019Questions {
             }
             index++;
         }
-
 
 
         List<String> result = new ArrayList<>();
@@ -368,13 +365,13 @@ public class UberInterview2019Questions {
 
     public static int kthSmallest(int[] arr, int left, int right, int k) {
         int pos = partition(arr, left, right);
-        if (pos - left == k-1) return arr[pos];
-        if (pos - left > k -1) return kthSmallest(arr, left, pos - 1, k);
+        if (pos - left == k - 1) return arr[pos];
+        if (pos - left > k - 1) return kthSmallest(arr, left, pos - 1, k);
 
-        return kthSmallest(arr, pos +1, right, k - pos + left - 1);
+        return kthSmallest(arr, pos + 1, right, k - pos + left - 1);
     }
 
-    public static void swap (int[] arr, int left, int right) {
+    public static void swap(int[] arr, int left, int right) {
         int temp = arr[left];
         arr[left] = arr[right];
         arr[right] = temp;
@@ -653,6 +650,7 @@ public class UberInterview2019Questions {
 
         private static class Counter {
             int i;
+
             public int getIndexAndIncrement() {
                 return i++;
             }
