@@ -28,6 +28,40 @@ public class FacebookInterviewQuestions {
 
      */
 
+    public static int findLastGoodCommitShorter(boolean[] commitHistory) {
+        if (commitHistory == null || commitHistory.length == 0) {
+            return -1;
+        }
+
+        if (commitHistory.length == 1) {
+            if (commitHistory[0])
+                return 0;
+            else
+                return -1;
+        }
+
+        int start = 0;
+        int end = commitHistory.length - 1;
+        int mid;
+         while(start < end){
+
+             mid = (start + end) / 2;
+
+             if (commitHistory[mid] && !commitHistory[mid+1]) {
+                 return mid;
+             }
+
+             if (commitHistory[mid]) {
+                 start = mid;
+             } else {
+                 end = mid;
+             }
+
+         }
+
+         return -1;
+    }
+
     public static int findLastGoodCommit(boolean[] commitHistory) {
 
         if (commitHistory == null || commitHistory.length == 0) {

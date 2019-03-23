@@ -28,7 +28,6 @@ public class GraphQuestions {
         }
 
         public void dfs(int v) {
-            //boolean visited[]= new boolean[V];
             HashSet<Integer> visited = new HashSet<>();
             dfs(v, visited);
         }
@@ -158,6 +157,7 @@ public class GraphQuestions {
 
             private static void dfs(int[][] m, int row, int col, boolean[][] visited) {
                 if (row < 0 || row >= ROW || col < 0 || col >= COL) return;
+                if (m[row][col] != 1) return;
                 if (visited[row][col]) return;
 
                 visited[row][col] = true;

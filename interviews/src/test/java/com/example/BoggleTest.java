@@ -11,12 +11,12 @@ import static org.junit.Assert.*;
  */
 public class BoggleTest {
     @Test
-    public void testFindWords() throws Exception {
-        char[][] board = {{'o','a','a','n', 'i'},
-                          {'e','t','a','e', 'l'},
-                          {'i','h','k','r', 'y'},
-                          {'i','f','l','v', 'a'}};
-        String[] words = {/*"oath","pea","eat","rain",*/ "ilya"};
+    public void testFindWords() {
+        char[][] board = {{'o','a','i','z', 'i'},
+                          {'u','t','r','a', 'l'},
+                          {'a','h','o','t', 'y'},
+                          {'a','n','o','i', 'a'}};
+        String[] words = {"oath","pea","eat","rain", "ilya", "author", "authorization"};
         Boggle boggle = new Boggle();
         List<String> result = boggle.findWords(board, words);
         result.stream().forEach(s -> System.out.println(s));

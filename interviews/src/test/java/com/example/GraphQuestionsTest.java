@@ -35,4 +35,17 @@ public class GraphQuestionsTest {
 
         g.bfs(2);
     }
+
+    @Test
+    public void testIslandSearch() {
+        int result = GraphQuestions.Graph.IslandSearch.countIslands(new int[][] {
+                {1, 0, 1, 0, 1},
+                {1, 0, 0, 0, 1},
+                {0, 0, 1, 0, 1},
+                {1, 0, 0, 0, 1},
+                {1, 0, 0, 1, 1}
+        });
+
+        System.out.println("Amount of islands = " + result);
+    }
 }

@@ -3,6 +3,7 @@ package com.example;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -57,7 +58,7 @@ public class FacebookInterviewQuestionsTest {
 
     @Test
     public void testMaxSlidingWindow() throws Exception {
-        System.out.println(maxSlidingWindow(new int[]{4, 2, 5, 3, 7, 9, 5, 3, 7, 12, 11, 13, 4, 5, 6, 20, 12, 3, 4, 1, 1, 1, 1, 1}, 3));
+        System.out.println(Arrays.toString(maxSlidingWindow(new int[]{4, 2, 5, 3, 7, 9, 5, 3, 7, 12, 11, 13, 4, 5, 6, 20, 12, 3, 4, 1, 1, 1, 1, 1}, 3)));
     }
 
     @Test
@@ -258,4 +259,34 @@ public class FacebookInterviewQuestionsTest {
         System.out.println(findLastGoodCommit(commitHistory));
     }
 
+    @Test
+    public void testFindLastGoodCommitShorter() {
+        System.out.println(findLastGoodCommitShorter(null));
+
+        System.out.println(findLastGoodCommitShorter(new boolean[]{}));
+
+        boolean[] commitHistory = new boolean[]{false}; // 0
+        System.out.println(findLastGoodCommitShorter(commitHistory));
+
+        commitHistory = new boolean[]{true}; // 1
+        System.out.println(findLastGoodCommitShorter(commitHistory));
+
+        commitHistory = new boolean[]{true, false}; // 10
+        System.out.println(findLastGoodCommitShorter(commitHistory));
+
+        commitHistory = new boolean[]{true, true, false}; // 110
+        System.out.println(findLastGoodCommitShorter(commitHistory));
+
+        commitHistory = new boolean[]{true, true, true,
+                true, false, false}; //111100
+        System.out.println(findLastGoodCommitShorter(commitHistory));
+
+        commitHistory = new boolean[]{true, true, true,
+                true, true, true,
+                true, true, true,
+                true, true, false,
+                false, false, false,
+                false};  //1111111111100000
+        System.out.println(findLastGoodCommitShorter(commitHistory));
+    }
 }
