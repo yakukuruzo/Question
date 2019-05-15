@@ -108,6 +108,7 @@ public class TreeQuestions {
         return Math.max(getHeight(node.left), getHeight(node.right)) + 1;
     }
 
+    // Lowest Common Ancestor
     public static Node findLCA(Node node, int n1, int n2) {  // O( N )
         // Base case
         if (node == null)

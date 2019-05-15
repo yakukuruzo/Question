@@ -267,10 +267,6 @@ public class SortQuestions {
         }
     }
 
-
-
-
-
     // Heap sort
     public static void maxHeapSort(int array[]) {
         int n = buildheap(array);

@@ -74,6 +74,7 @@ public class BoxInterviewQuestions {
 
     */
 
+    // TODO: Check correctness
         public static int[] getTopK(Scores scores, int topK) {
 
             if (topK < 1 || scores == null) {

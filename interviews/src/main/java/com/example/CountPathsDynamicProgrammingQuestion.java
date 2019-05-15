@@ -7,6 +7,7 @@ package com.example;
 public class CountPathsDynamicProgrammingQuestion {
 
 
+    // TODO: Check correctness
     public static int countPaths(boolean[][] grid, int row, int col, int[][] paths) { // O(N^2) vs O(2^N^2)
         //if (!isValid(grid, row, col)) return 0;
         //if (isAtEnd(grid, row, col)) return 1;

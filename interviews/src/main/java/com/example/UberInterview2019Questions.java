@@ -14,12 +14,21 @@ import java.util.PriorityQueue;
 
 public class UberInterview2019Questions {
 
+
+    // 27.03.2019
+    // 1. Battle field game design.
+    // 2. Water tank task.
+    // 3. Given 2 lists, return 3 lists with unique elements for the first list, unique elements for the second and intersection of both lists.
+    // 4. Weather app. Sort cities by country, show sorted list of cities, when click a city show another screen with the temperature.
+    // Dagger, RxJava, refactoring
+
+
     // Flattening iterator
     public static class FlatteningIterator<T> implements Iterator<T> {
 
         private final List<Iterator<T>> mIteratorList = new ArrayList<>();
-        private Iterator<T> mCurrentIterator;
         private Iterator<Iterator<T>> mIterator;
+        private Iterator<T> mCurrentIterator;
 
         public FlatteningIterator(List<List<T>> listOfLists) {
             if (listOfLists != null) {
@@ -30,12 +39,12 @@ public class UberInterview2019Questions {
                 }
             }
 
-            if (!mIteratorList.isEmpty()) {
+            //if (!mIteratorList.isEmpty()) {
                 mIterator = mIteratorList.iterator();
                 if (mIterator.hasNext()) {
                     mCurrentIterator = mIterator.next();
                 }
-            }
+            //}
         }
 
         @Override
@@ -206,7 +215,6 @@ public class UberInterview2019Questions {
                     if (queue.isEmpty()) {
                         continue;
                     }
-                    //result.deleteCharAt(result.length() - 1);
                     result.append('#');
                     queue.offer(LAYER_DELIMETER);
                 } else if (node == CHILDREN_DELIMETER) {
@@ -420,7 +428,6 @@ public class UberInterview2019Questions {
     }
 
     // String comparison with numbers
-
     public static class NumberAwareStringComparator implements Comparator<String> {
         private static final boolean isDigit(char ch) {
             return ((ch >= '0') && (ch <= '9'));
@@ -603,13 +610,13 @@ public class UberInterview2019Questions {
         // Check 3x3 blocks
         for (int block = 0; block < 9; block++) {
             Arrays.fill(cell, false);
-            for (int i = block / 3 * 3; i < block / 3 * 3 + 3; i++) {
-                for (int j = block % 3 * 3; j < block % 3 * 3 + 3; j++) {
-                    if (board[i][j] != '.') {
-                        if (cell[board[i][j] - '1']) {
+            for (int row = block / 3 * 3; row < block / 3 * 3 + 3; row++) {
+                for (int col = block % 3 * 3; col < block % 3 * 3 + 3; col++) {
+                    if (board[row][col] != '.') {
+                        if (cell[board[row][col] - '1']) {
                             return false;
                         }
-                        cell[board[i][j] - '1'] = true;
+                        cell[board[row][col] - '1'] = true;
                     }
                 }
             }
