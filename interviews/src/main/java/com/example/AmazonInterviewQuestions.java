@@ -1,8 +1,15 @@
 package com.example;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import java.util.Stack;
 
 public class AmazonInterviewQuestions {
+
+    // Phone interview 15.05.2019
+    // 1. Boggle search
 
     // Next Greater Element
     /* prints element and NGE pair for all elements of arr[] of size n */
@@ -151,4 +158,94 @@ public class AmazonInterviewQuestions {
                 T2[NUM_STATION - 1] + x[1]);
     }
 
+    /*
+You are given a NxN matrix with each cell having an alphabetic character
+(case-insensitive). The objective is to return a list of all the legal
+dictionary words in this matrix, using 'Boggle rules'. Boggle rules mean that
+a word can be formed by starting in any square of the matrix, and moving to
+any adjacent (cardinal or diagonal) cell as you build up the word. Assume you
+have a dictionary that you can use to efficiently test for legal words, though
+you'll need to propose the API for the dictionary. For example:
+
+O B C
+G L F
+G H E
+
+returns; "BOGGLE", "LOG", "GOLF" (possibly others I'm not seeing).
+*/
+
+// MxN matrix
+// L words in the dictionary
+// S average word length
+
+// O(MxNxSXL) time
+//
+
+    public static class Boggle {
+
+        public static List<String> findWords(char[][] board, String[] dict) {
+            if (board == null || board.length == 0 || dict == null || dict.length == 0) {
+                return null; // Error state
+            }
+
+            com.example.Boggle.Trie t = new com.example.Boggle.Trie();
+
+            StringBuffer sb = new StringBuffer();
+            Set<Integer> visited = new HashSet<>();
+            Set<String> result = new HashSet<>();
+
+            for (int i = 0; i < board.length; i++) {
+                for (int j = 0; j < board[i].length; j++) {
+                    findWordsUtil(board, t, i, j, sb, visited, result);
+                }
+            }
+
+            return new ArrayList<>(result);
+        }
+
+        public static void findWordsUtil(
+                char[][] board,
+                com.example.Boggle.Trie t,
+                int i,
+                int j,
+                StringBuffer sb,
+                Set<Integer> visited,
+                Set<String> result) {
+
+            if (i < 0 || j < 0 || i >= board.length || j >= board.length) {
+                return;
+            }
+
+            int cellCoord = i * board[i].length + j;
+
+            if (visited.contains(cellCoord)) {
+                return;
+            }
+
+            sb.append(board[i][j]);
+            String str = sb.toString();
+            if (!t.startsWith(str)) {
+                sb.deleteCharAt(sb.length() - 1);
+                return;
+            }
+            visited.add(cellCoord);
+
+            if (t.search(str)) {
+                result.add(str);
+            }
+
+            findWordsUtil(board, t, i + 1, j, sb, visited, result);
+            findWordsUtil(board, t, i - 1, j, sb, visited, result);
+            findWordsUtil(board, t, i, j + 1, sb, visited, result);
+            findWordsUtil(board, t, i, j - 1, sb, visited, result);
+
+            findWordsUtil(board, t, i + 1, j + 1, sb, visited, result);
+            findWordsUtil(board, t, i - 1, j - 1, sb, visited, result);
+            findWordsUtil(board, t, i - 1, j + 1, sb, visited, result);
+            findWordsUtil(board, t, i + 1, j - 1, sb, visited, result);
+
+            sb.deleteCharAt(sb.length() - 1);
+            visited.remove(cellCoord);
+        }
+    }
 }

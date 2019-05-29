@@ -59,14 +59,14 @@ public class Boggle {
         visited.remove(val);
     }
 
-    class TrieNode {
+    public static class TrieNode {
         TrieNode[] child = new TrieNode[26];
         boolean isWord;
         public TrieNode() {
         }
     }
 
-    class Trie {
+    public static class Trie {
         private TrieNode root;
 
         public Trie() {

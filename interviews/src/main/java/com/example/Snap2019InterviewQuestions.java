@@ -9,7 +9,8 @@ public class Snap2019InterviewQuestions {
     // 1. Implement ref counter on Java
     // 2. Implement OrderEnforcer
     // 3. Implement Blocking Queue using locks
-    // 4. Find Max Gain similar to Stocks
+    // 4. Find Max Gain similar to Stocks.
+    // 5. Android App architecture. Libraries, ORM
 
     // 17.04.2019 Phone interview with Snap
     // Questions:

@@ -8,6 +8,10 @@ import java.util.Date;
 
 public class DropboxInterviewQuestions {
 
+    // 05.2019 Test tasks on HackerRank
+    // 1. is_camera_roll_finger_tracking_enabled
+    //
+
     public static class Node {
         public int counter;
         public Node next;
